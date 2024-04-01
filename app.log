@@ -1,0 +1,700 @@
+2024-03-31 15:11:29,336 - ERROR - Exception on /api/admin/signup [POST]
+Traceback (most recent call last):
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1971, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\default.py", line 919, in do_execute
+    cursor.execute(statement, parameters)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "E:\ABC\lib\site-packages\MySQLdb\connections.py", line 261, in query
+    _mysql.connection.query(self, query)
+MySQLdb.DataError: (1406, "Data too long for column 'password' at row 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\ABC\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\ABC\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "E:\ABC\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\User\PycharmProjects\flaskProject\api\route\admin_routes.py", line 25, in signup
+    db.session.commit()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\scoping.py", line 597, in commit
+    return self._proxied.commit()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1972, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1257, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1232, in _prepare_impl
+    self.session.flush()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4296, in flush
+    self._flush(objects)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4431, in _flush
+    with util.safe_reraise():
+  File "E:\ABC\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4392, in _flush
+    flush_context.execute()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1422, in execute
+    return meth(
+  File "E:\ABC\lib\site-packages\sqlalchemy\sql\elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1644, in _execute_clauseelement
+    ret = self._execute_context(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1850, in _execute_context
+    return self._exec_single_context(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1990, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 2357, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1971, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\default.py", line 919, in do_execute
+    cursor.execute(statement, parameters)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "E:\ABC\lib\site-packages\MySQLdb\connections.py", line 261, in query
+    _mysql.connection.query(self, query)
+sqlalchemy.exc.DataError: (MySQLdb.DataError) (1406, "Data too long for column 'password' at row 1")
+[SQL: INSERT INTO `admin` (first_name, last_name, username, password) VALUES (%s, %s, %s, %s)]
+[parameters: ('hbhbhbh', 'jjghgff', 'ch', 'scrypt:32768:8:1$tqMDglnO6SibbcLP$66abea032625b974308256255dbdad7b7f994f68d9c0ee987423187a992c3d64e0434dd1a358fdadc724cd8bdbede8ef67eafbe1ae86cf4e0d8f47ec607d9a61')]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-03-31 15:18:47,587 - ERROR - Exception on /api/admin/signup [POST]
+Traceback (most recent call last):
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1971, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\default.py", line 919, in do_execute
+    cursor.execute(statement, parameters)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "E:\ABC\lib\site-packages\MySQLdb\connections.py", line 261, in query
+    _mysql.connection.query(self, query)
+MySQLdb.DataError: (1406, "Data too long for column 'password' at row 1")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\ABC\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\ABC\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "E:\ABC\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\User\PycharmProjects\flaskProject\api\route\admin_routes.py", line 25, in signup
+    db.session.commit()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\scoping.py", line 597, in commit
+    return self._proxied.commit()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1972, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1257, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1232, in _prepare_impl
+    self.session.flush()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4296, in flush
+    self._flush(objects)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4431, in _flush
+    with util.safe_reraise():
+  File "E:\ABC\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4392, in _flush
+    flush_context.execute()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1422, in execute
+    return meth(
+  File "E:\ABC\lib\site-packages\sqlalchemy\sql\elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1644, in _execute_clauseelement
+    ret = self._execute_context(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1850, in _execute_context
+    return self._exec_single_context(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1990, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 2357, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1971, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\default.py", line 919, in do_execute
+    cursor.execute(statement, parameters)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "E:\ABC\lib\site-packages\MySQLdb\connections.py", line 261, in query
+    _mysql.connection.query(self, query)
+sqlalchemy.exc.DataError: (MySQLdb.DataError) (1406, "Data too long for column 'password' at row 1")
+[SQL: INSERT INTO `admin` (first_name, last_name, username, password) VALUES (%s, %s, %s, %s)]
+[parameters: ('hbhbhbh', 'jjghgff', 'ch', 'scrypt:32768:8:1$m7lymwIB3sAHWAA6$e675002ebc43dd14ab92dcde3c3d7c5edc02e1dc891de3813442c291ed32b6d301bd2fe481b10bb0d7fae41032cb5148dad028996edfe0253f832a2db7ae07a1')]
+(Background on this error at: https://sqlalche.me/e/20/9h9h)
+2024-03-31 15:20:11,653 - ERROR - Exception on /api/admin/signup [POST]
+Traceback (most recent call last):
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1971, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\default.py", line 919, in do_execute
+    cursor.execute(statement, parameters)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "E:\ABC\lib\site-packages\MySQLdb\connections.py", line 261, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1364, "Field 'id' doesn't have a default value")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\ABC\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\ABC\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "E:\ABC\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\User\PycharmProjects\flaskProject\api\route\admin_routes.py", line 25, in signup
+    db.session.commit()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\scoping.py", line 597, in commit
+    return self._proxied.commit()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1972, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1257, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1232, in _prepare_impl
+    self.session.flush()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4296, in flush
+    self._flush(objects)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4431, in _flush
+    with util.safe_reraise():
+  File "E:\ABC\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4392, in _flush
+    flush_context.execute()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1422, in execute
+    return meth(
+  File "E:\ABC\lib\site-packages\sqlalchemy\sql\elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1644, in _execute_clauseelement
+    ret = self._execute_context(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1850, in _execute_context
+    return self._exec_single_context(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1990, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 2357, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1971, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\default.py", line 919, in do_execute
+    cursor.execute(statement, parameters)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "E:\ABC\lib\site-packages\MySQLdb\connections.py", line 261, in query
+    _mysql.connection.query(self, query)
+sqlalchemy.exc.IntegrityError: (MySQLdb.IntegrityError) (1364, "Field 'id' doesn't have a default value")
+[SQL: INSERT INTO `admin` (first_name, last_name, username, password) VALUES (%s, %s, %s, %s)]
+[parameters: ('hbhbhbh', 'jjghgff', 'ch', 'scrypt:32768:8:1$Up7DdIqPhSINTaA5$a8ea3ee7a8cceb8adc2407ddab5d7986a2f9d884436550adec5be32522c4fb11c1a82b91c8ab901ad025bee98f1958541c7bb90d690832bfb876ebb919df8f30')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-03-31 15:36:35,447 - ERROR - Exception on /api/student/student [POST]
+Traceback (most recent call last):
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1971, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\default.py", line 919, in do_execute
+    cursor.execute(statement, parameters)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "E:\ABC\lib\site-packages\MySQLdb\connections.py", line 261, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1062, "Duplicate entry '' for key 'student.email'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\ABC\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\ABC\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "E:\ABC\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\User\PycharmProjects\flaskProject\api\route\student_routes.py", line 25, in create_student
+    new_student = StudentService.create_student(student_dto)
+  File "C:\Users\User\PycharmProjects\flaskProject\api\service\student_service.py", line 6, in create_student
+    return StudentRepository.create_student(student_dto)
+  File "C:\Users\User\PycharmProjects\flaskProject\api\repo\student_repo.py", line 9, in create_student
+    db.session.commit()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\scoping.py", line 597, in commit
+    return self._proxied.commit()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1972, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1257, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1232, in _prepare_impl
+    self.session.flush()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4296, in flush
+    self._flush(objects)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4431, in _flush
+    with util.safe_reraise():
+  File "E:\ABC\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4392, in _flush
+    flush_context.execute()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1422, in execute
+    return meth(
+  File "E:\ABC\lib\site-packages\sqlalchemy\sql\elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1644, in _execute_clauseelement
+    ret = self._execute_context(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1850, in _execute_context
+    return self._exec_single_context(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1990, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 2357, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1971, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\default.py", line 919, in do_execute
+    cursor.execute(statement, parameters)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "E:\ABC\lib\site-packages\MySQLdb\connections.py", line 261, in query
+    _mysql.connection.query(self, query)
+sqlalchemy.exc.IntegrityError: (MySQLdb.IntegrityError) (1062, "Duplicate entry '' for key 'student.email'")
+[SQL: INSERT INTO student (name, email) VALUES (%s, %s)]
+[parameters: ('', '')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-03-31 15:38:13,373 - ERROR - Exception on /api/student/student [POST]
+Traceback (most recent call last):
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1971, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\default.py", line 919, in do_execute
+    cursor.execute(statement, parameters)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "E:\ABC\lib\site-packages\MySQLdb\connections.py", line 261, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1062, "Duplicate entry '' for key 'student.email'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\ABC\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\ABC\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "E:\ABC\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\User\PycharmProjects\flaskProject\api\route\student_routes.py", line 25, in create_student
+    new_student = StudentService.create_student(student_dto)
+  File "C:\Users\User\PycharmProjects\flaskProject\api\service\student_service.py", line 6, in create_student
+    return StudentRepository.create_student(student_dto)
+  File "C:\Users\User\PycharmProjects\flaskProject\api\repo\student_repo.py", line 9, in create_student
+    db.session.commit()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\scoping.py", line 597, in commit
+    return self._proxied.commit()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1972, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1257, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1232, in _prepare_impl
+    self.session.flush()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4296, in flush
+    self._flush(objects)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4431, in _flush
+    with util.safe_reraise():
+  File "E:\ABC\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4392, in _flush
+    flush_context.execute()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1422, in execute
+    return meth(
+  File "E:\ABC\lib\site-packages\sqlalchemy\sql\elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1644, in _execute_clauseelement
+    ret = self._execute_context(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1850, in _execute_context
+    return self._exec_single_context(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1990, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 2357, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1971, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\default.py", line 919, in do_execute
+    cursor.execute(statement, parameters)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "E:\ABC\lib\site-packages\MySQLdb\connections.py", line 261, in query
+    _mysql.connection.query(self, query)
+sqlalchemy.exc.IntegrityError: (MySQLdb.IntegrityError) (1062, "Duplicate entry '' for key 'student.email'")
+[SQL: INSERT INTO student (name, email) VALUES (%s, %s)]
+[parameters: ('', '')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-03-31 15:42:51,978 - ERROR - Exception on /api/student/student [POST]
+Traceback (most recent call last):
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1971, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\default.py", line 919, in do_execute
+    cursor.execute(statement, parameters)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "E:\ABC\lib\site-packages\MySQLdb\connections.py", line 261, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1062, "Duplicate entry '' for key 'student.email'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\ABC\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\ABC\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "E:\ABC\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\User\PycharmProjects\flaskProject\api\route\student_routes.py", line 25, in create_student
+    new_student = StudentService.create_student(student_dto)
+  File "C:\Users\User\PycharmProjects\flaskProject\api\service\student_service.py", line 6, in create_student
+    return StudentRepository.create_student(student_dto)
+  File "C:\Users\User\PycharmProjects\flaskProject\api\repo\student_repo.py", line 9, in create_student
+    db.session.commit()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\scoping.py", line 597, in commit
+    return self._proxied.commit()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1972, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1257, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1232, in _prepare_impl
+    self.session.flush()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4296, in flush
+    self._flush(objects)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4431, in _flush
+    with util.safe_reraise():
+  File "E:\ABC\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4392, in _flush
+    flush_context.execute()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1422, in execute
+    return meth(
+  File "E:\ABC\lib\site-packages\sqlalchemy\sql\elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1644, in _execute_clauseelement
+    ret = self._execute_context(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1850, in _execute_context
+    return self._exec_single_context(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1990, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 2357, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1971, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\default.py", line 919, in do_execute
+    cursor.execute(statement, parameters)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "E:\ABC\lib\site-packages\MySQLdb\connections.py", line 261, in query
+    _mysql.connection.query(self, query)
+sqlalchemy.exc.IntegrityError: (MySQLdb.IntegrityError) (1062, "Duplicate entry '' for key 'student.email'")
+[SQL: INSERT INTO student (name, email) VALUES (%s, %s)]
+[parameters: ('', '')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-03-31 16:01:32,529 - ERROR - Exception on /api/student/student [POST]
+Traceback (most recent call last):
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1971, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\default.py", line 919, in do_execute
+    cursor.execute(statement, parameters)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "E:\ABC\lib\site-packages\MySQLdb\connections.py", line 261, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1062, "Duplicate entry 's@gamail.com' for key 'student.email'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\ABC\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\ABC\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "E:\ABC\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\User\PycharmProjects\flaskProject\api\route\student_routes.py", line 33, in create_student
+    new_student = StudentService.create_student(student_dto)
+  File "C:\Users\User\PycharmProjects\flaskProject\api\service\student_service.py", line 6, in create_student
+    return StudentRepository.create_student(student_dto)
+  File "C:\Users\User\PycharmProjects\flaskProject\api\repo\student_repo.py", line 9, in create_student
+    db.session.commit()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\scoping.py", line 597, in commit
+    return self._proxied.commit()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1972, in commit
+    trans.commit(_to_root=True)
+  File "<string>", line 2, in commit
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1257, in commit
+    self._prepare_impl()
+  File "<string>", line 2, in _prepare_impl
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\state_changes.py", line 139, in _go
+    ret_value = fn(self, *arg, **kw)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 1232, in _prepare_impl
+    self.session.flush()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4296, in flush
+    self._flush(objects)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4431, in _flush
+    with util.safe_reraise():
+  File "E:\ABC\lib\site-packages\sqlalchemy\util\langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\session.py", line 4392, in _flush
+    flush_context.execute()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 466, in execute
+    rec.execute(self)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\unitofwork.py", line 642, in execute
+    util.preloaded.orm_persistence.save_obj(
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\persistence.py", line 93, in save_obj
+    _emit_insert_statements(
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\persistence.py", line 1233, in _emit_insert_statements
+    result = connection.execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1422, in execute
+    return meth(
+  File "E:\ABC\lib\site-packages\sqlalchemy\sql\elements.py", line 514, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1644, in _execute_clauseelement
+    ret = self._execute_context(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1850, in _execute_context
+    return self._exec_single_context(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1990, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 2357, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\base.py", line 1971, in _exec_single_context
+    self.dialect.do_execute(
+  File "E:\ABC\lib\site-packages\sqlalchemy\engine\default.py", line 919, in do_execute
+    cursor.execute(statement, parameters)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+  File "E:\ABC\lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "E:\ABC\lib\site-packages\MySQLdb\connections.py", line 261, in query
+    _mysql.connection.query(self, query)
+sqlalchemy.exc.IntegrityError: (MySQLdb.IntegrityError) (1062, "Duplicate entry 's@gamail.com' for key 'student.email'")
+[SQL: INSERT INTO student (name, email) VALUES (%s, %s)]
+[parameters: ('sahvhgvbjhghgu', 's@gamail.com')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-03-31 21:43:54,808 - ERROR - Exception on /api/student/student [POST]
+Traceback (most recent call last):
+  File "E:\ABC\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\ABC\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "E:\ABC\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\User\PycharmProjects\flaskProject\api\route\student_routes.py", line 45, in create_student
+    new_student = StudentService.create_student(student_dto, addresses)
+TypeError: StudentService.create_student() takes 1 positional argument but 2 were given
+2024-03-31 21:48:13,238 - ERROR - Exception on /api/student/student [POST]
+Traceback (most recent call last):
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\clsregistry.py", line 515, in _resolve_name
+    rval = d[token]
+  File "E:\ABC\lib\site-packages\sqlalchemy\util\_collections.py", line 344, in __missing__
+    self[key] = val = self.creator(key)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\clsregistry.py", line 483, in _access_cls
+    return self.fallback[key]
+KeyError: 'Address'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\ABC\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\ABC\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "E:\ABC\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\User\PycharmProjects\flaskProject\api\route\student_routes.py", line 45, in create_student
+    new_student = StudentService.create_student(student_dto, addresses)
+  File "C:\Users\User\PycharmProjects\flaskProject\api\service\student_service.py", line 6, in create_student
+    return StudentRepository.create_student(student_dto, addresses)
+  File "C:\Users\User\PycharmProjects\flaskProject\api\repo\student_repo.py", line 8, in create_student
+    new_student = Student(name=student_dto.name, email=student_dto.email)
+  File "<string>", line 4, in __init__
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\state.py", line 559, in _initialize_instance
+    manager.dispatch.init(self, args, kwargs)
+  File "E:\ABC\lib\site-packages\sqlalchemy\event\attr.py", line 497, in __call__
+    fn(*args, **kw)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\mapper.py", line 4395, in _event_on_init
+    instrumenting_mapper._check_configure()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\mapper.py", line 2388, in _check_configure
+    _configure_registries({self.registry}, cascade=True)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\mapper.py", line 4203, in _configure_registries
+    _do_configure_registries(registries, cascade)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\mapper.py", line 4244, in _do_configure_registries
+    mapper._post_configure_properties()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\mapper.py", line 2405, in _post_configure_properties
+    prop.init()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\interfaces.py", line 584, in init
+    self.do_init()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\relationships.py", line 1642, in do_init
+    self._setup_entity()
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\relationships.py", line 1854, in _setup_entity
+    self._clsregistry_resolve_name(argument)(),
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\clsregistry.py", line 519, in _resolve_name
+    self._raise_for_name(name, err)
+  File "E:\ABC\lib\site-packages\sqlalchemy\orm\clsregistry.py", line 500, in _raise_for_name
+    raise exc.InvalidRequestError(
+sqlalchemy.exc.InvalidRequestError: When initializing mapper Mapper[Student(student)], expression 'Address' failed to locate a name ('Address'). If this is a class name, consider adding this relationship() to the <class 'api.model.student_model.Student'> class after both dependent classes have been defined.
+2024-03-31 21:49:48,320 - ERROR - Exception on /api/student/student [POST]
+Traceback (most recent call last):
+  File "E:\ABC\lib\site-packages\flask\app.py", line 1463, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 872, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\ABC\lib\site-packages\flask_cors\extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "E:\ABC\lib\site-packages\flask\app.py", line 870, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\ABC\lib\site-packages\flask\app.py", line 855, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "C:\Users\User\PycharmProjects\flaskProject\api\route\student_routes.py", line 45, in create_student
+    new_student = StudentService.create_student(student_dto, addresses)
+  File "C:\Users\User\PycharmProjects\flaskProject\api\service\student_service.py", line 6, in create_student
+    return StudentRepository.create_student(student_dto, addresses)
+  File "C:\Users\User\PycharmProjects\flaskProject\api\repo\student_repo.py", line 12, in create_student
+    new_address = Address(street=address_data['street'], city=address_data['city'],
+NameError: name 'Address' is not defined

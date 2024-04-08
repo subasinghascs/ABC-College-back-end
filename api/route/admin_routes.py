@@ -1,7 +1,7 @@
 # app/routes.py
 
 from flask import request, jsonify, Blueprint
-from flask_jwt_extended import jwt_required, create_access_token, get_jwt_identity
+from flask_jwt_extended import jwt_required, create_access_token, get_jwt_identity, unset_jwt_cookies
 from werkzeug.security import check_password_hash, generate_password_hash
 from Database.db import db
 from api.model.admin_model import Admin
@@ -36,6 +36,21 @@ def login():
             return jsonify({"access_token": access_token}), 200
         else:
             return jsonify({"message": "Invalid username or password"}), 401
+
+
+
+@admin_bp.route('/logout', methods=['POST'])
+@jwt_required()
+def logout():
+    try:
+        # Clear JWT cookies from response
+        resp = jsonify({"message": "Logged out successfully"})
+        unset_jwt_cookies(resp)
+        return resp, 200
+    except Exception as e:
+        return jsonify({"message": "Error occurred during logout"}), 500
+
+
 
 @admin_bp.route('/protected-route')
 @jwt_required()
